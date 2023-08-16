@@ -1,0 +1,21 @@
+<!-- jmp-module-name/pom.xml -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Other module details -->
+
+    <parent>
+        <groupId>xyz.mpdn</groupId>
+        <artifactId>jmp-project</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>jmp-cloud-bank-impl</artifactId>
+    <packaging>jar</packaging>
+
+    <!-- Other module configurations -->
+
+</project>
