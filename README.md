@@ -1,2 +1,2 @@
-# java_global_mentoring_program
+# Java Global Mentoring Program
 Java Global Mentoring Program
