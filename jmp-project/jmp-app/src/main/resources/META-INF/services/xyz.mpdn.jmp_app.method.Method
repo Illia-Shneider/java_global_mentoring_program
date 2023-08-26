@@ -1,0 +1,7 @@
+xyz.mpdn.jmp_app.method.CardMethod
+xyz.mpdn.jmp_app.method.UserMethod
+xyz.mpdn.jmp_app.method.SubscriptionMethod
+xyz.mpdn.jmp_app.method.SubscribeMethod
+xyz.mpdn.jmp_app.method.TestMethod
+xyz.mpdn.jmp_app.method.PayableUserMethod
+xyz.mpdn.jmp_app.method.AverageUserAgeMethod

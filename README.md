@@ -10,7 +10,6 @@ mvn package
 ```
 /bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m users
 ```
-
 ```
 John Doe, 1990-05-15
 Jane Smith, 1985-09-22
@@ -25,6 +24,7 @@ Ava Moore, 1992-06-21
 David Taylor, 1987-10-14
 Emma Anderson, 1993-12-30
 ```
+
 ```
 /bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m subscribe -p 1111999922223334
 ```
@@ -50,11 +50,36 @@ Emma Anderson, 1993-12-30
 ```
 4444333322221111 2023-06-10
 ```
+
 ```
 /bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m card -p 4444
 ```
-
 ```
 4444333322221111 2023-06-10
 4444555566667777 2023-09-02
+```
+
+```
+/bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m payableUser
+```
+```
+John Doe, 1990-05-15 (33)
+Jane Smith, 1985-09-22 (37)
+Michael Johnson, 1978-11-03 (44)
+Emily Williams, 1995-02-18 (28)
+William Brown, 1982-07-29 (41)
+Olivia Jones, 1998-04-12 (25)
+James Davis, 1974-08-07 (49)
+Sophia Miller, 1989-01-26 (34)
+Robert Wilson, 2000-03-09 (23)
+Ava Moore, 1992-06-21 (31)
+David Taylor, 1987-10-14 (35)
+Emma Anderson, 1993-12-30 (29
+```
+
+```
+/bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m averageAge
+```
+```
+Average age is 34 
 ```

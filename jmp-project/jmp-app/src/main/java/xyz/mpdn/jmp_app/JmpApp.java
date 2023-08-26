@@ -3,12 +3,15 @@ package xyz.mpdn.jmp_app;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+import xyz.mpdn.jmp_app.method.Method;
 import xyz.mpdn.jmp_cloud_service_impl.CloudServiceImpl;
-import xyz.mpdn.jmp_dto.BankCard;
+import xyz.mpdn.jmp_service_api.Service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ServiceLoader;
+import java.util.ServiceLoader.Provider;
 import java.util.concurrent.Callable;
 
 
@@ -19,7 +22,14 @@ public class JmpApp implements Callable<Integer> {
     private static final String CONNECTION_URL = "jdbc:h2:mem:jmp;INIT=RUNSCRIPT FROM '" + H2_INIT_SQL + "';";
     private final Connection connection;
 
-    @Option(names = {"-m", "--method"}, description = "subscribe, subscription, users, card", required = true)
+    @Option(names = {"-m", "--method"}, description = """ 
+            -m subscribe
+            -m subscription
+            -m users
+            -m card
+            -m averageAge
+            -m payableUser
+            """, required = true)
     private String method;
     @Option(names = {"-p", "--parameter"}, description = """
             -m subscribe -p {card number}
@@ -33,58 +43,25 @@ public class JmpApp implements Callable<Integer> {
 
     public static void main(String[] args) throws SQLException {
         try (var connection = DriverManager.getConnection(CONNECTION_URL)) {
-            var code = new CommandLine(new JmpApp(connection)).execute(args);
-            System.exit(code);
+            System.exit(new CommandLine(new JmpApp(connection)).execute(args));
         }
     }
 
     @Override
     public Integer call() {
-        var service = new CloudServiceImpl();
-        service.setConnection(connection);
+        var service = ServiceLoader.load(Service.class)
+                .stream()
+                .map(Provider::get)
+                .filter(s -> s instanceof CloudServiceImpl)
+                .peek(s -> ((CloudServiceImpl) s).setConnection(connection))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("CloudServiceImpl not found in modules graph"));
 
-        if ("subscribe".equals(method)) {
-            var card = new BankCard();
-            card.setNumber(parameter);
-            service.subscribe(card);
-            service.getAllSubscriptions()
-                    .forEach(subscription -> System.out.format(
-                            "%s, %s %s%n",
-                            subscription.getBankcard(),
-                            subscription.getStartDate(),
-                            parameter.equals(subscription.getBankcard()) ? "*" : ""
-                    ));
-        }
-
-        if ("subscription".equals(method)) {
-            var subscription = service.getSubscriptionByBankCardNumber(parameter)
-                    .orElseThrow(SubscriptionNotFoundException::new);
-
-            System.out.format(
-                    "%s %s%n",
-                    subscription.getBankcard(),
-                    subscription.getStartDate());
-        }
-
-        if ("card".equals(method)) {
-            service.getAllSubscriptionsByCondition(sub -> sub.getBankcard().startsWith(parameter))
-                    .forEach(sub -> System.out.format(
-                            "%s %s%n",
-                            sub.getBankcard(),
-                            sub.getStartDate()
-                    ));
-        }
-
-        if ("users".equals(method)) {
-            service.getAllUsers()
-                    .forEach(user -> System.out.format(
-                            "%s %s, %s%n",
-                            user.getName(),
-                            user.getSurname(),
-                            user.getBirthday()
-                    ));
-        }
-
+        ServiceLoader.load(Method.class)
+                .stream()
+                .map(Provider::get)
+                .filter(m -> m.match(method))
+                .forEach(m -> m.handle(service, parameter));
 
         return 0;
     }
