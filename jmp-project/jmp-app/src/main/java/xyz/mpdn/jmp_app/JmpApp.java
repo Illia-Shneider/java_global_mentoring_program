@@ -21,9 +21,10 @@ public class JmpApp implements Callable<Integer> {
 
     @Option(names = {"-m", "--method"}, description = "subscribe, subscription, users, card", required = true)
     private String method;
-    @Option(names = {"-p", "--parameter"}, description = "-m subscribe -p {card number}" +
-            "\n-m subscription -p {card number}" +
-            "\n-m card -p {card number first digits}")
+    @Option(names = {"-p", "--parameter"}, description = """
+            -m subscribe -p {card number}
+            -m subscription -p {card number}
+            -m card -p {card number first digits}""")
     private String parameter;
 
     public JmpApp(Connection connection) {
