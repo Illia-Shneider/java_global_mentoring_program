@@ -30,4 +30,6 @@ public interface Service {
                 .average()
                 .orElse(Double.NaN);
     }
+
+    List<Subscription> getAllSubscriptions();
 }
