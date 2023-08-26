@@ -23,6 +23,12 @@
             <artifactId>jmp_bank_api</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.8.0</version>
+        </dependency>
     </dependencies>
 
     <!-- Other module configurations -->

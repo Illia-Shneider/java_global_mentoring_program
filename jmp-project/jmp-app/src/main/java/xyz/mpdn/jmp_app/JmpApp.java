@@ -1,6 +1,5 @@
 package xyz.mpdn.jmp_app;
 
-import lombok.RequiredArgsConstructor;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -12,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.concurrent.Callable;
 
-@RequiredArgsConstructor
+
 @Command(name = "JmpApp", mixinStandardHelpOptions = true, version = "jmpApp 1.0",
         description = "Demo app for a Java Mentoring Program course")
 public class JmpApp implements Callable<Integer> {
@@ -26,6 +25,10 @@ public class JmpApp implements Callable<Integer> {
             "\n-m subscription -p {card number}" +
             "\n-m card -p {card number first digits}")
     private String parameter;
+
+    public JmpApp(Connection connection) {
+        this.connection = connection;
+    }
 
     public static void main(String[] args) throws SQLException {
         try (var connection = DriverManager.getConnection(CONNECTION_URL)) {
