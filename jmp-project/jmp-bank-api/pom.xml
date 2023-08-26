@@ -5,17 +5,22 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Other module details -->
-
     <parent>
         <groupId>xyz.mpdn</groupId>
         <artifactId>jmp-project</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
-    <artifactId>jmp-bank-api</artifactId>
+    <artifactId>jmp_bank_api</artifactId>
     <packaging>jar</packaging>
+    <name>jmp-bank-api</name>
 
-    <!-- Other module configurations -->
+    <dependencies>
+        <dependency>
+            <groupId>xyz.mpdn</groupId>
+            <artifactId>jmp_dto</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

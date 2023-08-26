@@ -5,17 +5,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Other module details -->
-
     <parent>
         <groupId>xyz.mpdn</groupId>
         <artifactId>jmp-project</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
-    <artifactId>jmp-dto</artifactId>
+    <artifactId>jmp_dto</artifactId>
     <packaging>jar</packaging>
-
-    <!-- Other module configurations -->
+    <name>jmp_dto</name>
 
 </project>
