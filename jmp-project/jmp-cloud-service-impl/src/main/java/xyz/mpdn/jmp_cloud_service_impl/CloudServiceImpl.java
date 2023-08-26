@@ -30,38 +30,38 @@ public class CloudServiceImpl implements Service {
     public void subscribe(BankCard card) {
         try {
             qr.execute(connection,
-                    "INSERT INTO subscriptions (bankcard, date) VALUES (?, CURRENT_DATE)",
+                    "INSERT INTO subscriptions (bankcard, startDate) VALUES (?, CURRENT_DATE)",
                     card.getNumber());
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            throw new RuntimeException(exception);
         }
     }
 
     @Override
     public Optional<Subscription> getSubscriptionByBankCardNumber(String cardNumber) {
-        Optional<Subscription> subscription = Optional.empty();
+        Optional<Subscription> subscription;
         try {
             subscription = qr.query(connection,
-                            "SELECT bankcard, date FROM subscriptions WHERE bankcard = ?",
+                            "SELECT bankcard, startDate FROM subscriptions WHERE bankcard = ?",
                             subscriptionHandler,
                             cardNumber)
                     .stream()
                     .findFirst();
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            throw new RuntimeException(exception);
         }
 
         return subscription;
     }
 
     public List<Subscription> getAllSubscriptions() {
-        List<Subscription> subscriptions = List.of();
+        List<Subscription> subscriptions;
         try {
             subscriptions = qr.query(connection,
-                    "SELECT bankcard, date FROM subscriptions",
+                    "SELECT bankcard, startDate FROM subscriptions",
                     subscriptionHandler);
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            throw new RuntimeException(exception);
         }
 
         return subscriptions;
@@ -69,14 +69,13 @@ public class CloudServiceImpl implements Service {
 
     @Override
     public List<User> getAllUsers() {
-        List<User> users = List.of();
+        List<User> users;
         try {
             users = qr.query(connection,
                     "SELECT name, surname, birthday FROM users",
                     userHandler);
         } catch (SQLException exception) {
             throw new RuntimeException(exception);
-//            System.out.println(exception.getMessage());
         }
 
         return users;

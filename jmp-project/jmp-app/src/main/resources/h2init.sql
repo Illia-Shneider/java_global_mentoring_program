@@ -11,7 +11,7 @@ CREATE TABLE subscriptions
 (
     id       BIGINT AUTO_INCREMENT,
     bankcard VARCHAR(100) NOT NULL UNIQUE,
-    date     DATE         NOT NULL
+    startDate     DATE         NOT NULL
 );
 
 INSERT INTO users (name, surname, birthday)
@@ -28,7 +28,7 @@ VALUES ('John', 'Doe', '1990-05-15'),
        ('David', 'Taylor', '1987-10-14'),
        ('Emma', 'Anderson', '1993-12-30');
 
-INSERT INTO subscriptions (bankcard, date)
+INSERT INTO subscriptions (bankcard, startDate)
 VALUES ('1234567890123456', '2023-08-01'),
        ('9876543210987654', '2023-07-15'),
        ('5555666677778888', '2023-09-05'),
