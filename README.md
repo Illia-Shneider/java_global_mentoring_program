@@ -2,10 +2,14 @@
 Java Global Mentoring Program
 
 ###Build
- mvn package
+```
+mvn package
+```
 
 ###Execute
+```
 > /bin/bash# java -jar /jmp-app/target/JmpApp-1.0.0.jar -m users
+```
 
 ```
 John Doe, 1990-05-15
@@ -21,8 +25,9 @@ Ava Moore, 1992-06-21
 David Taylor, 1987-10-14
 Emma Anderson, 1993-12-30
 ```
+```
 >/bin/bash# java -jar /jmp-app/target/JmpApp-1.0.0.jar -m subscribe -p 1111999922223334
-
+```
 ```
 1234567890123456, 2023-08-01 
 9876543210987654, 2023-07-15 
@@ -39,12 +44,15 @@ Emma Anderson, 1993-12-30
 1111999922223334, 2023-08-26 *
 ```
 
+```
 >/bin/bash# java -jar /jmp-app/target/JmpApp-1.0.0.jar -m subscription -p 4444333322221111
-
+```
 ```
 4444333322221111 2023-06-10
 ```
+```
 >/bin/bash# java -jar /jmp-app/target/JmpApp-1.0.0.jar -m card -p 4444
+```
 
 ```
 4444333322221111 2023-06-10
