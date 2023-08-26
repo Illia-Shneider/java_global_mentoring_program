@@ -1,14 +1,14 @@
 # Java Global Mentoring Program
 Java Global Mentoring Program
 
-###Build
+### Build
 ```
 mvn package
 ```
 
-###Execute
+### Execute
 ```
-> /bin/bash# java -jar /jmp-app/target/JmpApp-1.0.0.jar -m users
+/bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m users
 ```
 
 ```
@@ -26,7 +26,7 @@ David Taylor, 1987-10-14
 Emma Anderson, 1993-12-30
 ```
 ```
->/bin/bash# java -jar /jmp-app/target/JmpApp-1.0.0.jar -m subscribe -p 1111999922223334
+/bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m subscribe -p 1111999922223334
 ```
 ```
 1234567890123456, 2023-08-01 
@@ -45,13 +45,13 @@ Emma Anderson, 1993-12-30
 ```
 
 ```
->/bin/bash# java -jar /jmp-app/target/JmpApp-1.0.0.jar -m subscription -p 4444333322221111
+/bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m subscription -p 4444333322221111
 ```
 ```
 4444333322221111 2023-06-10
 ```
 ```
->/bin/bash# java -jar /jmp-app/target/JmpApp-1.0.0.jar -m card -p 4444
+/bin/bash> java -jar /jmp-app/target/JmpApp-1.0.0.jar -m card -p 4444
 ```
 
 ```
