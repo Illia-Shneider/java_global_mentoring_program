@@ -3,7 +3,8 @@ Java Global Mentoring Program
 
 ### Build
 ```
-mvn package
+/bin/bash> cd jmp-project
+/bin/bash> mvn package
 ```
 
 ### Execute
